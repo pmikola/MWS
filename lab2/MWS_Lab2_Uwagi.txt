@@ -1,0 +1,78 @@
+-----------------------------------------------------
+TERMIN ODDANIA SPRAWOZDAÑ
+-----------------------------------------------------
+Termin: do poniedzia³ku do pó³nocy
+Sposób: sprawozdanie na serwerze studia
+
+
+-----------------------------------------------------
+PUNKTACJA
+-----------------------------------------------------
+- raport wykonany zgodnie z kart¹ poleceñ: 8 pkt
+- dodatkowe analizy wykraczaj¹ce poza kartê poleceñ: 1 pkt
+- suma: (nasycenie na 8pkt)
+
+Uwagi:
+a) Proszê pamiêtaæ, ¿e do ka¿dego zadania w sprawozdaniu powinny byæ opisane:
+   - metoda rozwiazania problemu
+   - otrzymany wynik/wyniki
+   - wnioski/interpretacje wyniku
+
+b) Dodatkowa analiza jest indywidualnie wymyœlona i opracowana przez studenta.
+   Powinno to byæ rozszerzenie któregoœ z zadañ.
+   Proszê w sprawozdaniu jakoœ oznaczyæ zadanie dodatkowe tak, abym go nie przeoczy³ przy sprawdzaniu.
+
+
+-----------------------------------------------------
+UWAGI DO ZADAÑ  POMOCNE FUNKCJE
+-----------------------------------------------------
+
+? nazwa_funkcji
+
+-- ZAD 1 --
+
+read.table
+length() - zwraca rozmiar
+hist     - w tym zadaniu parametry histogramu trzeba tak dobraæ,
+           aby œrodki "koszyczków" by³y liczbami ca³kowitymi odpowiadaj¹cymi liczbie skrêtów
+dpois
+
+plot() i lines() do obrazków
+
+bootstrap mo¿na zrobiæ na dwa sposoby:
+- z bibliotek¹ boot
+- z wykorzystaniem funkcji "sample" i parametrem replace = TRUE
+
+
+-- ZAD 2 --
+
+Proszê ostro¿nie z rozk³adem GAMMA, bo mo¿na go definiowaæ róznie - a wtedy parametry maj¹ ró¿ne znaczenie.
+Widaæ to w helpie do dgamma: scale = 1/rate, rate = an alternative way to specify the scale.
+
+function - warto zdefiniowaæ funkcje "estymator_MM" i "estymator_NW" bo bêd¹ wykorzystywane wielokrotnie
+
+mean
+sd
+
+Estymator NW mo¿na zrealizowaæ na dwa sposoby (przynajmniej)
+ - library(MASS) i funkcja 
+    wynik = fitdistr(proba, "gamma", start=list(shape=punkt_startowy$alfa, scale=punkt_startowy$beta),lower = 0.001)$estimate
+    punkt starowy mo¿e byæ estymat¹ MM (metody momentów)
+ - wykorzystaæ równania z wyk³adu i szukaæ pierwiastka funkcj¹ root()
+
+dgamma() : fgp rozk³adu GAMMA
+
+quantile() - funkcja do okreœlenia kwantyli podanego rzêdu z próby
+przyk³ad u¿ycia:
+ Tr = (1-0.95)/2 # z obu stron tyle samo zostaje w ogonach
+ q_est = quantile(dane, c(Tr, 1-Tr))
+
+-- ZAD 3 --
+
+Zadanie 3 dotyczy rozk³adu Gaussa. Tu na wszystko sa gotowe wzory i nie trzeba robiæ bootstrapów.
+Wystarczy wyszukaæ na slajdach wyk³adowych odpowiednie wzory.
+
+mean(t) - œrednia arytmetyczna
+sd(t)   - Standard Deviation (odchylenie standardowe)
+qt      - funkcja kwantylowa rozk³adu t-Studenta
+qchisq  - funkcja kwantylowa rozk³adu Chi-Squared

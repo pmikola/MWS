@@ -1,0 +1,49 @@
+rm(list=ls())
+?
+seq
+plot
+lines
+
+
+----- zadanie 1. -----
+function: umiejêtnoœæ definiowania w³asnych funkcji 
+
+Vectorize: wektoryzacja funkcji, któr¹ wczeœniej siê napisa³o z myœl¹, ¿e argument jest skalarem
+
+integrate: ca³kowanie przydatne np. przy normowaniu FGP do 1
+ np.
+ # skalowanie FGP (aby ca³okowa³a siê do 1)
+ dens <- function(x){
+   skala  <- integrate(dens_unscaled,0,8)$value;
+   dens_unscaled(x) / skala
+ }
+
+cumsum: Cumulative Sum
+ np.
+ cumsum(dens(x))*dx do obliczenie dystrybuanty z FGP
+
+approxfun - do obliczenia funkcji odwrotnej; np. dystr1 = approxfun(dystr(x,0.001),x)
+uniroot
+
+runif: generacja zmiennych z rozk³adu równomiernego
+
+hist - histogram,
+ np.
+ hist(r,50, freq=F)
+
+ecdf: dystrybuanta empiryczna (Empirical Cumulative Distribution Function)
+
+----- zadanie 2. -----
+read.csv - wczytanie pliku CSV
+
+przyk³ad wy³uskania daty:
+d           = as.Date(aa$Date, "%m/%d/%Y")
+rok_wypadku = as.integer(format(d, "%Y"))
+
+aggregate: agregacja daych
+ np.
+ w = aggregate(rok_wypadku, list(rok=rok_wypadku), length)
+ names(w) <-  c("rok","Liczba wypadków")
+
+loess.smooth(): wyg³adzanie
+ew. filter
